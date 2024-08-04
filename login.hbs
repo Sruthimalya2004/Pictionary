@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.66/build/spline-viewer.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    spline-viewer {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .typing-container {
+      position: absolute;
+      top: 40%;
+      left: 4%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-size: 90px;
+      font-family: 'Indie Flower', cursive;
+      font-weight: bold;
+      color: #006400;
+      animation: popUpDown 2s infinite alternate;
+    }
+
+    .typing-container span {
+      display: inline-block;
+    }
+
+    .K {
+      color: #800000; /* Dark red */
+    }
+
+    .i {
+      color: #008000; /* Dark green */
+    }
+
+    .r {
+      color: #000080; /* Dark blue */
+    }
+
+    .u {
+      color: #8B4513; /* Saddle brown */
+    }
+
+    .k-2 {
+      color: #4B0082; /* Indigo */
+    }
+
+    .a {
+      color: #800080; /* Purple */
+    }
+
+    .l {
+      color: #808000; /* Olive */
+    }
+
+    @keyframes popUpDown {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .button-container {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      
+    }
+    .button-container {
+        text-align: center; /* Center the button */
+        margin-top: 40px; /* Add margin on top of the button */
+        margin-bottom: 50px;
+      }
+  </style>
+</head>
+
+<body>
+  <!-- Spline viewer -->
+  <spline-viewer url="https://prod.spline.design/b0zyYHmK7tK2Wbl0/scene.splinecode"></spline-viewer>
+
+  <!-- Animated text container -->
+  <div class="typing-container">
+    <span class="K">K</span><span class="i">i</span><span class="r">r</span><span class="u">u</span><span class="k-2">k</span><span class="a">a</span><span class="l">l</span><span class="s">s</span>
+  </div>
+
+  <!-- Play button and input container -->
+  <div class="button-container">
+    <form>
+      <div class="input-container">
+        <!-- Bootstrap text box -->
+        <input type="text" name="playerName" id="playerNameInput" class="form-control" placeholder="Enter your name">
+        <br>
+        <input type="text" name="roomNumber" id="roomNumberInput" class="form-control" placeholder="Enter room number">
+        <br>
+      </div>
+      <!-- Dark green play button -->
+      <div class="button-container1">
+        <button type="submit" class="btn btn-primary">Play</button>
+      </div>
+    </form>    
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+</body>
+<script>
+  // Assuming you're using jQuery for AJAX
+$('form').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Get the player name from the input field
+    const playerName = $('#playerNameInput').val();
+
+    // Send a POST request to submit the player name
+    $.post('/submit-name', { playerName: playerName}, function(data, status) {
+        console.log('Player name submitted:', playerName);
+    });
+    // Redirect to home page after processing the name
+    window.location.href = '/home';
+});
+</script>
+</html>

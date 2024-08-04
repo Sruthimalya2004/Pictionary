@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pictionary</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="home.css">
+</head>
+<body class="bg-light">
+
+    <!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="row justify-content-between"> <!-- Use justify-content-between -->
+            <div class="col-md-auto"> <!-- Auto-sizing column -->
+                <h4 class="text-center" id="drawguess">Draw the Word</h4>
+            </div>
+            <div class="col-md-auto text-right"> <!-- Auto-sizing column -->
+                <span id="timer">00:00</span>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="wordContainer">
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Section (Chat History) -->
+            <div class="col-md-3 chat-container">
+                <h4 class="text-center">Guess History</h4>
+                <div id="chatHistory" class="chat-history">
+                    <!-- Chat messages will be displayed here -->
+                </div>
+                <!-- Guess input and button -->
+                <form>
+                    <div class="guess-input">
+                        <input type="text" id="guessInput" placeholder="Enter your guess">
+                        <button type="submit" id="guessButton" class="btn btn-primary">Guess</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Center Section (Canvas) -->
+            <div class="col-md-6 canvas-container">
+                <canvas id="canvas" width="680" height="550" class="border" style="pointer-events: none;"></canvas>
+                <div class="mt-3 text-center">
+                    <div class="color-palette">
+                        <div class="color-row">
+                            <button class="color-button" style="background-color: #000000" data-color="#000000"></button>
+                            <button class="color-button" style="background-color: #636363" data-color="#636363"></button>
+                            <button class="color-button" style="background-color: #ff0000" data-color="#ff0000"></button>
+                            <button class="color-button" style="background-color: #ff8000" data-color="#ff8000"></button>
+                            <button class="color-button" style="background-color: #ffff00" data-color="#ffff00"></button>
+                            <button class="color-button" style="background-color: #008000" data-color="#008000"></button>
+                            <button class="color-button" style="background-color: #0000ff" data-color="#0000ff"></button>
+                            <button class="color-button" style="background-color: #4b0082" data-color="#4b0082"></button>
+                            <button class="color-button" style="background-color: #ee82ee" data-color="#ee82ee"></button>
+                        </div>
+                        <div class="color-row">
+                            <button class="color-button" style="background-color: #ffffff" data-color="#ffffff"></button>
+                            <button class="color-button" style="background-color: #b4b4b4" data-color="#b4b4b4"></button>
+                            <button class="color-button" style="background-color: #ffadad" data-color="#ffadad"></button>
+                            <button class="color-button" style="background-color: #ffd6a5" data-color="#ffd6a5"></button>
+                            <button class="color-button" style="background-color: #fdffb6" data-color="#fdffb6"></button>
+                            <button class="color-button" style="background-color: #caffbf" data-color="#caffbf"></button>
+                            <button class="color-button" style="background-color: #9bf6ff" data-color="#9bf6ff"></button>
+                            <button class="color-button" style="background-color: #bdb2ff" data-color="#bdb2ff"></button>
+                            <button class="color-button" style="background-color: #ffc6ff" data-color="#ffc6ff"></button>
+                        </div>
+                    </div>
+                    <label id="fillColorPickerButton"><img src="fill.png" alt="Fill colour" width="20" height="20" id="fillimg"></label>
+                    <input type="color" id="fillColorPicker" value="#ffffff">
+                    <label for = "colorPicker" id="colorPickerButton"><img src="colour.png" alt="Pen Colour" width="20" height="20" id="colourimg"></label>
+                    <input type="color" id="colorPicker" value="#000000">
+                    <label for="lineWidthRange"><img src="width.png" alt="Line range" width="20" height="20" id="widthimg"></label>
+                    <input type="range" id="lineWidthRange" min="1" max="10" value="2">
+                    <button id="clearCanvas"><img src="clear.png" alt="Clear" width="20" height="20" id="clearimg"></button>
+                    <button id="undoStroke"><img src="undo.png" alt="Undo" width="20" height="20" id="undoimg"></button>
+                    <button id="erase"><img src="erase.png" alt="Erase" width="20" height="20" id="earseimg"></button>
+                </div>
+            </div>
+
+            <!-- Right Section (Player List) -->
+            <div class="col-md-3 player-list-container">
+                <h4 class="text-center">Players</h4>
+                <ul id="playerList" class="player-list">
+                    <!-- Player names will be displayed here -->
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Socket.io -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="socket.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

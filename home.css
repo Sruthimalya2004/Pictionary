@@ -1,0 +1,156 @@
+body {
+    background-color: #d8e4bc;
+}
+
+.canvas-container {
+    text-align: center;
+    background-color: #d8e4bc;
+}
+
+canvas {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    cursor: crosshair;
+    margin-bottom: 5px;
+}
+
+input[type="color"] {
+    margin-left: 5px;
+    width: 30px;
+}
+
+input[type="range"] {
+    margin-left: 5px;
+    width: 70px;
+}
+
+.input-group-append {
+    margin-left: -1px;
+}
+
+.input-group-append button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group-append button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group-append button:hover {
+    background-color: #0069d9;
+}
+
+.input-group-append button:active {
+    background-color: #0056b3;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.header h4{
+    margin-left: 460px;
+}
+
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none; /* Remove border from canvas container */
+}
+
+.chat-container,
+.player-list-container {
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    background-color: #d8e4bc;
+}
+
+.chat-history,
+.player-list {
+    padding: 10px;
+}
+.canvas-container canvas {
+    border: 2px solid #000;
+    margin-top: 20px;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+label {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.color-palette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.color-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.color-button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+#wordContainer{
+    margin-left: 640px;
+    font-weight: bold;
+    font-size: larger;
+}
+.container-fluid h4
+{
+    margin-top: 15px;
+    background-color: #333;
+    color: #fff;
+}
+.guess-input {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    left: 12%;
+    transform: translateX(-50%);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* Optional: Add background color */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
+    width: 330px;
+    height: 55px;
+}
+.guess-input input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc; /* Optional: Add border */
+    border-radius: 5px; /* Optional: Add border radius */
+    height: 35px;
+}
+
+.guess-input button {
+    margin-bottom: 10px;
+    flex-shrink: 0; /* Prevent button from shrinking */
+    height: 35px;
+}
+.disabled {
+    display: none;
+}
